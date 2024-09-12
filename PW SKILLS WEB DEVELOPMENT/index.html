@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT DOM - 2</title>
+</head>
+<body>
+    <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
+    <script>
+        //appendChild
+        let sayMayName =document.createElement("h1");
+        sayMayName.className="WW";
+        sayMayName.style.color="green"
+        sayMayName.textContent=" Say my name = Hyzern Burg (You god damm right)";
+        console.log(sayMayName);
+        document.body.appendChild(sayMayName);
+
+        //Remove Child
+        let ul = document.querySelector("ul");
+        console.log(ul);
+
+        let holas = document.querySelectorAll("li");
+        console.log(holas);
+
+        for(hola of holas){
+            ul.removeChild(hola);
+        }
+    </script>
+</body>
+</html>

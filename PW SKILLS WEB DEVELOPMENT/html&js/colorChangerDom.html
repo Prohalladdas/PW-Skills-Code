@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color changer in DOM</title>
+    <style>
+        /* Button style */
+        button {
+            padding: 12px;
+            font-size: 20px;
+            border-radius: 14px;
+            border: 1px solid rgb(128, 15, 0);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: #87a7eb;
+            color: rgb(0, 75, 0);
+        }
+
+        body {
+            height: 80vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- BGColor changing button -->
+    <button id="button">BG Color Changer</button>
+
+    <!-- JavaScript-->
+    <script>
+        let btn =document.getElementById("button");
+        let randomColor =() =>{
+            let valu ="0123456789ABCDEF"
+            let cons ="#";
+
+            for (let i=0; i<6; i++){
+                cons = cons + valu[Math.floor(Math.random() *16)];
+            };
+            return cons;
+        };
+        console.log(randomColor());
+        
+        function changeRandomColor (){
+            document.body.style.backgroundColor =randomColor();
+        }
+
+        btn.addEventListener("click",changeRandomColor);
+    </script>
+</body>
+
+</html>

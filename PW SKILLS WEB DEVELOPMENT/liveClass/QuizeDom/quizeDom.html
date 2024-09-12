@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quize</title>
+</head>
+
+<body style="background-color: rgb(29, 29, 29); color: white;">
+    <!-- Headiing -->
+    <h1>Javascript Quize DOM </h1>
+
+    <div id="quize"></div> <!-- Question -->
+
+    <button id="submit">Submit</button> <!-- Submit button -->
+
+    <div id="results"></div> <!-- Result -->
+
+    <!-- Javascript start here -->
+    <script>
+        let quizeContainer = document.getElementById('quize')
+        let submitBotton = document.getElementById('submit')
+        let resultsContainer = document.getElementById('results')
+
+        // All questions here in the arrey
+        let myQuestions = [
+            {
+                question: "What is the Naruto's favourite food ?",
+                answer: {
+                    a: "Dumplings",
+                    b: "Shushi",
+                    c: "Ramen"
+                },
+                correctAnswer: "c"
+            },
+            {
+                question: "Who is more powerfull in Naruto Show?",
+                answer: {
+                    a: "Naruto",
+                    b: "Mardara",
+                    c: "Obito"
+                },
+                correctAnswer: "b"
+            },
+            {
+                question: "What is Naruto's son name ?",
+                answer: {
+                    a: "Boruto",
+                    b: "Soruto",
+                    c: "Goruto"
+                },
+                correctAnswer: "a"
+            },
+        ];
+        // Question Show in page
+        function buildQuize() {
+            const output = []
+
+            myQuestions.forEach((currenQuestion, questionNumber) => {
+                const answer = []
+
+                for (letter in currenQuestion.answer) {
+                    answer.push(
+                        `<lebel><input type="radio" name="question${questionNumber}" value="${letter}"/> ${letter}: ${currenQuestion.answer[letter]}</lebel>
+                        `
+                    )
+                }
+                // console.log(answer);
+                output.push(
+                    `<div class="question">${currenQuestion.question}</div>
+                    <div class="answer">${answer.join('')}</div>
+                    `
+                )
+            })
+            // console.log(output);
+            quizeContainer.innerHTML = output.join('')
+        }
+
+        // Answer
+        function showResult() {
+            const answerContainers = quizeContainer.querySelectorAll('.answer');
+
+            let numCurrect = 0
+            myQuestions.forEach((currenQuestion, questionNumber) => {
+                // Find selected answer
+                const answerContainer2 = answerContainers[questionNumber]
+                // input[name=question1]:checked
+                const seletor = `input[name=question${questionNumber}]:checked`
+                const userAnswer = (answerContainer2.querySelector(seletor) || {}).value
+
+                if (userAnswer === currenQuestion.correctAnswer) {
+                    numCurrect++
+                    answerContainers[questionNumber].style.color = 'green'
+                } else {
+                    answerContainers[questionNumber].style.color = 'red'
+                }
+            })
+
+            resultsContainer.innerHTML = `${numCurrect} out of ${myQuestions.length}`
+
+        }
+
+        buildQuize()
+
+        submitBotton.addEventListener('click', showResult)
+    </script>
+</body>
+
+</html>

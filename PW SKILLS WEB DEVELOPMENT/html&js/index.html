@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Class name -->
+    <div class="className">Hello</div>
+
+    <!-- id name -->
+    <p id="idName">Konichiba</p>
+
+    <!-- tag -->
+    <h4> Moshi moshi</h4>
+    <h4> Moshi moshi2</h4>
+    <h4> Moshi moshi3</h4>
+
+    <!-- Query -->
+    <main class="pain">Nagato</main>
+
+    <!-- inner html -->
+
+    <li>
+        <p class="p">1</p>
+        <p class="p">2</p>
+        <p class="p">3</p>
+    </li>
+
+    <script>
+        //class name
+        let class1 = document.getElementsByClassName("className");
+        console.log(class1);
+
+        // id name
+        let id1 = document.getElementById("idName");
+        console.log(id1.innerText);
+        id1.innerText = "Arigato na"
+
+        // Tag name
+        let var3 = document.getElementsByTagName("h4");
+        console.log(var3[1]);
+        var3[1].innerText = "PW Skills";
+        var3[2].style.color = "red"
+        var3[2].style.backgroundColor = "yellow"
+
+        // Query selector
+        let var4 = document.querySelector(".pain");
+        console.log(var4);
+
+        var4.innerText = "Happy"
+        var4.className = "Sad happy"//element er class name change korar jonno
+        var4.classList = "Sad happy nonu" //element er class name change korar jonno
+
+        // inner html
+        let var5 = document.querySelectorAll(".p");
+        console.log(var5[1]);
+        var5[1].innerText="106";
+        var5[1].style.color="pink"
+
+    </script>
+</body>
+
+</html>
